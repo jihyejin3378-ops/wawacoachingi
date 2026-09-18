@@ -1,0 +1,19 @@
+{
+  "name": "wawa학습코칭센터",
+  "tagline": "초·중·고 국어 · 영어 · 수학",
+  "tel": "010-3206-1175",
+  "hours": "평일 10:00–20:00",
+  "hoursFull": "평일 10:00–20:00 · 토 10:00–16:00",
+  "address": "부산광역시 ○○구 ○○로 00, 3층",
+  "myCenter": "",
+  "siteUrl": "https://example.netlify.app",
+  "naverVerification": "",
+  "kakaoMapKey": "",
+  "bizInfo": "상호 ○○교육 | 대표 ○○○ | 사업자등록번호 000-00-00000 | 학원설립운영등록번호 제0000호",
+  "formAction": "#",
+  "links": {
+    "blog": "#",
+    "instagram": "#",
+    "kakao": "#"
+  }
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+{{HEAD}}
+</head>
+<body>
+
+{{HEADER}}
+
+<!-- ========================= 히어로 ========================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div>
+      <span class="award">{{TAGLINE}}</span>
+      <h1>공부하라는 말 대신,<br />공부하는 법을 알려줍니다.</h1>
+      <p>진도만 나가는 수업으로는 습관이 바뀌지 않습니다. 플래너로 하루를 설계하고 코치가 매일 점검하면서, 아이가 혼자서도 공부할 수 있게 만듭니다.</p>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="#counsel">상담 예약</a>
+        <a class="btn btn-ghost" href="/centers.html">지점 찾기</a>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><b>1:6</b><span>코치 1명당 학생 수</span></div>
+        <div class="fact"><b>주 3회</b><span>플래너 점검</span></div>
+        <div class="fact"><b>4주</b><span>학부모 상담 주기</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+
+      <!-- 학생 사진: 배경을 지운 PNG 파일을 student.png 로 저장해
+           index.html 과 같은 폴더에 넣으면 자동으로 표시됩니다. -->
+      <div class="student">
+        <img src="/assets/student.png" alt="플래너를 들고 있는 학생"
+             onerror="this.parentNode.classList.add('empty'); this.remove();" />
+      </div>
+
+      <!-- 플래너 카드 -->
+      <div class="planner" aria-label="학생 플래너 예시">
+      <div class="planner-holes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="planner-date"><b>10월 14일</b><span>화요일 · 중2 서연</span></div>
+
+      <div class="task done">
+        <span class="box"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg></span>
+        <span class="task-label">수학 유형서 p.32–40</span><span class="task-time">45분</span>
+      </div>
+      <div class="task done">
+        <span class="box"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg></span>
+        <span class="task-label">영단어 Day 12 암기</span><span class="task-time">20분</span>
+      </div>
+      <div class="task done">
+        <span class="box"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg></span>
+        <span class="task-label">국어 비문학 2지문</span><span class="task-time">30분</span>
+      </div>
+      <div class="task">
+        <span class="box"></span>
+        <span class="task-label">수학 오답노트 정리</span><span class="task-time">내일</span>
+      </div>
+
+      <div class="coach-note">
+        오답 3번, 왜 틀렸는지 <em>한 줄로 적어오기!</em>
+        <span class="coach-sign">— 담당 코치 메모</span>
+      </div>
+    </div><!-- /planner -->
+
+    </div><!-- /hero-visual -->
+  </div>
+</section>
+
+<!-- ========================= 이런 아이에게 ========================= -->
+<section class="fit" id="fit">
+  <div class="wrap fit-grid">
+    <div>
+      <h2 class="h2">이런 아이라면<br />한 번 오세요</h2>
+      <p class="lead">성적이 오르지 않는 이유는 대부분 시간이 부족해서가 아니라, 공부하는 방식이 정리되지 않아서입니다.</p>
+    </div>
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg>
+        <span>학원을 여러 곳 다녀도 성적이 그대로인 아이
+          <small>수업량이 아니라 복습 구조에 문제가 있는 경우가 많습니다.</small></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg>
+        <span>책상에는 오래 앉아 있는데 성과가 없는 아이
+          <small>무엇을 얼마나 할지 정하지 않고 시작하면 시간만 씁니다.</small></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg>
+        <span>시험 2주 전에야 급하게 시작하는 아이
+          <small>시험일에서 역산해 계획을 나누는 훈련이 필요합니다.</small></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg>
+        <span>수업은 이해했는데 시험만 보면 틀리는 아이
+          <small>아는 것과 모르는 것을 구분하는 연습부터 시작합니다.</small></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4.5 4.5L19.5 6.5"/></svg>
+        <span>기초가 비어 있어 진도를 따라가기 버거운 아이
+          <small>학년과 무관하게 비어 있는 단원부터 다시 채웁니다.</small></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========================= 학습 시스템 ========================= -->
+<section class="systems" id="systems">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">진도가 아니라 구조를 관리합니다</h2>
+      <p class="lead">수업 시간에만 공부하는 아이가 아니라, 집에서도 스스로 공부하는 아이로 만드는 네 가지 시스템입니다.</p>
+    </div>
+
+    <!-- 1 -->
+    <div class="sys-row">
+      <div class="sys-text">
+        <p class="sys-kicker">우리 학교 시험에 맞춘 공부</p>
+        <h3>학교별 내신 맞춤 대비</h3>
+        <p>같은 학년, 같은 과목이라도 학교마다 출제 방식이 다릅니다. 교과서 중심인 학교, 프린트와 부교재에서 많이 내는 학교를 구분해 아이가 다니는 학교 기준으로 준비합니다.</p>
+        <div class="tags"><span class="tag">학교별 기출 분석</span><span class="tag">서술형 대비</span><span class="tag">수행평가 관리</span></div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">시험일 역산 관리 예시</p>
+        <div class="dday">
+          <div class="dday-row"><b>D-28</b><div class="dday-bar">시험 범위 개념 정리</div></div>
+          <div class="dday-row"><b>D-14</b><div class="dday-bar">유형별 문제 풀이</div></div>
+          <div class="dday-row"><b>D-7</b><div class="dday-bar">학교별 예상문제 · 오답</div></div>
+          <div class="dday-row"><b>D-1</b><div class="dday-bar">암기 점검 · 서술형 마무리</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="sys-row">
+      <div class="sys-text">
+        <p class="sys-kicker">습관이 남는 수업</p>
+        <h3>플래너 기반 학습습관 관리</h3>
+        <p>매 수업마다 해야 할 공부를 구체적인 분량으로 적고, 다음 수업에 실천 여부를 확인합니다. 어떤 과목에 시간이 몰리는지, 어떤 과제가 계속 밀리는지가 기록으로 드러납니다.</p>
+        <div class="tags"><span class="tag">오답노트</span><span class="tag">백지 복습</span><span class="tag">시간 관리 지도</span></div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">주간 실천 기록</p>
+        <div class="week">
+          <div><div class="week-day">월</div><div class="week-col"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+          <div><div class="week-day">화</div><div class="week-col"><span class="dot on"></span><span class="dot on"></span><span class="dot miss"></span></div></div>
+          <div><div class="week-day">수</div><div class="week-col"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+          <div><div class="week-day">목</div><div class="week-col"><span class="dot on"></span><span class="dot miss"></span><span class="dot"></span></div></div>
+          <div><div class="week-day">금</div><div class="week-col"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+          <div><div class="week-day">토</div><div class="week-col"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+          <div><div class="week-day">일</div><div class="week-col"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="sys-row">
+      <div class="sys-text">
+        <p class="sys-kicker">학년이 아니라 실력 기준</p>
+        <h3>개별 진도 무학년 수업</h3>
+        <p>같은 교실에 앉아 있어도 아이마다 시작 지점이 다릅니다. 기초가 비어 있으면 이전 학년 단원부터 다시 채우고, 이미 충분하면 심화 단계로 먼저 넘어갑니다.</p>
+        <div class="tags"><span class="tag">진단 후 개별 진도</span><span class="tag">결손 보완</span><span class="tag">심화 연계</span></div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">같은 중2, 다른 출발점</p>
+        <div class="ladder">
+          <div class="ladder-row"><span>학생 A<small>중1 일차함수부터</small></span><div class="ladder-track"><span class="ladder-fill" style="width:34%"></span></div></div>
+          <div class="ladder-row"><span>학생 B<small>현행 진도 유지</small></span><div class="ladder-track"><span class="ladder-fill" style="width:62%"></span></div></div>
+          <div class="ladder-row"><span>학생 C<small>심화 단계 진행</small></span><div class="ladder-track"><span class="ladder-fill" style="width:88%"></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="sys-row">
+      <div class="sys-text">
+        <p class="sys-kicker">국어 · 영어 · 수학</p>
+        <h3>과목별 평가와 피드백</h3>
+        <p>월말 평가와 단원별 성취도 확인으로 아이의 현재 상태를 숫자로 남깁니다. 결과는 다음 달 학습 계획에 바로 반영되고, 학부모님께도 같은 자료로 설명드립니다.</p>
+        <div class="tags"><span class="tag">월말 평가</span><span class="tag">단원 성취도</span><span class="tag">학부모 리포트</span></div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">10월 단원 성취도</p>
+        <div class="scores">
+          <div class="score-row"><span>수학</span><div class="score-track"><span class="score-fill" style="width:78%"></span></div><em>78</em></div>
+          <div class="score-row"><span>영어</span><div class="score-track"><span class="score-fill" style="width:91%"></span></div><em>91</em></div>
+          <div class="score-row"><span>국어</span><div class="score-track"><span class="score-fill" style="width:64%"></span></div><em>64</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 소개 영상 ========================= -->
+<section class="video" id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">수업 모습을 직접 보세요</h2>
+      <p class="lead">앞의 설명이 실제로 어떻게 이루어지는지 영상에 담았습니다.</p>
+    </div>
+
+    <!-- 영상을 바꾸려면 data-id 와 아래 썸네일 주소의 ID를 함께 교체하세요. -->
+    <div class="video-frame" id="videoFrame" data-id="hYVFoplgOcU" role="button" tabindex="0" aria-label="소개 영상 재생">
+      <img src="https://img.youtube.com/vi/hYVFoplgOcU/maxresdefault.jpg"
+           alt="센터 소개 영상 미리보기" loading="lazy"
+           onerror="this.src='https://img.youtube.com/vi/hYVFoplgOcU/hqdefault.jpg'" />
+      <button class="video-play" type="button" aria-label="영상 재생">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+    <p class="video-cap">재생을 누르면 유튜브에서 영상을 불러옵니다.</p>
+  </div>
+</section>
+
+<!-- ========================= 코칭 과정 ========================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">한 달을 한 바퀴로 돌립니다</h2>
+      <p class="lead">진단에서 시작해 점검으로 끝나고, 그 결과가 다시 다음 달 진단이 됩니다.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <b>1단계</b><h4>진단</h4>
+        <p>학습 성향 검사와 과목별 진단으로 현재 수준과 비어 있는 단원을 확인합니다.</p>
+      </div>
+      <div class="step">
+        <b>2단계</b><h4>설계</h4>
+        <p>진단 결과에 맞춰 개별 진도와 주간 학습량을 정하고 플래너에 옮깁니다.</p>
+      </div>
+      <div class="step">
+        <b>3단계</b><h4>코칭</h4>
+        <p>코치가 옆에서 막히는 지점을 풀어주고, 푸는 방식 자체를 교정합니다.</p>
+      </div>
+      <div class="step">
+        <b>4단계</b><h4>점검</h4>
+        <p>실천율과 평가 결과를 정리해 학부모님께 전달하고 다음 달 계획을 조정합니다.</p>
+      </div>
+    </div>
+
+    <p class="loop">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      4주 단위로 반복하며, 아이의 상태에 따라 계획을 다시 세웁니다.
+    </p>
+  </div>
+</section>
+
+<!-- ========================= 비교표 ========================= -->
+<section class="compare">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">강의식 수업과 무엇이 다른가요</h2>
+      <p class="lead">두 방식 모두 장단점이 있습니다. 아이의 상황에 따라 맞는 쪽이 다릅니다.</p>
+    </div>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">구분</th><th scope="col">일반 강의식 수업</th><th scope="col">개별 맞춤 코칭</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">수업 기준</th><td>학년과 학교 진도</td><td>아이의 실제 수준과 결손 단원</td></tr>
+          <tr><th scope="row">진도 운영</th><td>반 전체가 같은 속도로 이동</td><td>아이마다 다른 단원, 다른 속도</td></tr>
+          <tr><th scope="row">코치의 역할</th><td>지식을 설명하는 강의자</td><td>진단하고 계획을 설계하는 코치</td></tr>
+          <tr><th scope="row">수업 밖 관리</th><td>숙제 검사 중심</td><td>플래너로 공부 시간과 방법까지 점검</td></tr>
+          <tr><th scope="row">맞는 아이</th><td>설명식 수업을 잘 따라가는 아이</td><td>기초 보완이나 습관 교정이 필요한 아이</td></tr>
+          <tr><th scope="row">주의할 점</th><td>수준 차가 크면 효율이 떨어짐</td><td>점검 시스템이 없으면 흐트러지기 쉬움</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 후기 ========================= -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">실제 수강 후기</h2>
+      <p class="lead">성적표로 확인된 사례만 올립니다.</p>
+    </div>
+
+    <div class="review-list">
+{{REVIEWS}}
+    </div>
+
+    <p class="more-wrap"><a class="btn btn-ghost" href="/reviews.html">후기 더보기</a></p>
+  </div>
+</section>
+
+<!-- ========================= FAQ ========================= -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">자주 묻는 질문</h2>
+    </div>
+
+    <details open>
+      <summary>일반 학원과 어떤 점이 다른가요?</summary>
+      <p>일반 학원은 강사가 여러 학생에게 같은 내용을 설명하는 구조입니다. 저희는 아이마다 진도와 과제가 다르고, 수업 시간 외에 어떻게 공부하는지까지 플래너로 관리합니다. 가르치는 양보다 스스로 공부하는 시간을 늘리는 것이 목표입니다.</p>
+    </details>
+    <details>
+      <summary>초등학생도 다닐 수 있나요?</summary>
+      <p>네, 초등학생부터 고등학생까지 받습니다. 초등학생은 진도보다 학습 습관을 잡는 데 비중을 둡니다. 앉아 있는 시간을 늘리기보다 짧게라도 계획한 분량을 끝내는 경험을 쌓게 합니다.</p>
+    </details>
+    <details>
+      <summary>수업 시간표와 수강료는 어떻게 되나요?</summary>
+      <p>학년과 과목 수에 따라 다릅니다. 상담 시 아이의 현재 상태를 확인한 뒤 필요한 과목과 횟수를 제안드리고, 그에 맞는 수강료를 안내해 드립니다. 교습비는 센터에도 게시되어 있습니다.</p>
+    </details>
+    <details>
+      <summary>진단 검사는 유료인가요?</summary>
+      <p>첫 학습 진단과 상담은 무료입니다. 약 60분 정도 걸리며, 학습 성향 검사와 과목별 수준 확인을 함께 진행합니다. 결과는 상담 자리에서 바로 설명드립니다.</p>
+    </details>
+    <details>
+      <summary>학부모 상담은 얼마나 자주 하나요?</summary>
+      <p>기본 4주에 한 번 정기 상담을 진행하고, 시험 기간에는 별도로 한 번 더 안내드립니다. 그 사이에도 플래너 실천율이나 평가 결과에 변화가 있으면 바로 연락드립니다.</p>
+    </details>
+    <details>
+      <summary>한 반에 몇 명인가요?</summary>
+      <p>코치 한 명이 동시에 관리하는 학생은 최대 6명입니다. 각자 다른 과목과 진도를 하기 때문에, 설명이 필요한 학생에게 코치가 이동하며 개별로 봐 드립니다.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ========================= 상담 신청 ========================= -->
+<section class="counsel" id="counsel">
+  <div class="wrap counsel-grid">
+    <div>
+      <h2>먼저 아이의 현재 상태부터<br />확인해 보세요</h2>
+      <p class="counsel-desc">등록을 권하기 전에 진단부터 합니다. 60분 상담으로 어떤 과목의 어떤 단원이 비어 있는지, 공부 방식에서 무엇을 고쳐야 하는지 알려드립니다.</p>
+      <a class="counsel-tel" href="tel:{{TEL_RAW}}">
+        <b>{{TEL}}</b>
+        <span>{{HOURS_FULL}}</span>
+      </a>
+    </div>
+
+    <!-- 폼 전송에는 백엔드가 필요합니다. action 값을 Formspree 등으로 교체하세요. -->
+    <form class="form" action="{{FORM_ACTION}}" method="post">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">학부모 성함</label>
+          <input id="name" name="name" type="text" required placeholder="홍길동" />
+        </div>
+        <div class="field">
+          <label for="phone">연락처</label>
+          <input id="phone" name="phone" type="tel" required placeholder="010-0000-0000" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="grade">자녀 학년</label>
+          <select id="grade" name="grade" required>
+            <option value="">선택해 주세요</option>
+            <option>초등 3–4학년</option><option>초등 5–6학년</option>
+            <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option>
+            <option>고등학교 1학년</option><option>고등학교 2학년</option><option>고등학교 3학년</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="when">연락 가능한 시간</label>
+          <select id="when" name="when">
+            <option>오전 (10–12시)</option><option>오후 (13–17시)</option><option>저녁 (17–20시)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="memo">궁금한 점 (선택)</label>
+        <textarea id="memo" name="memo" placeholder="현재 다니는 학원, 고민되는 과목 등을 적어주시면 상담이 빨라집니다."></textarea>
+      </div>
+
+      <label class="agree">
+        <input type="checkbox" required />
+        <span>상담 안내를 위한 개인정보 수집·이용에 동의합니다. 수집 항목은 성함과 연락처, 자녀 학년이며 상담 종료 후 2개월 내 파기합니다.</span>
+      </label>
+
+      <button class="btn btn-solid" type="submit">상담 신청하기</button>
+      <p class="form-note">신청 후 영업일 기준 1일 이내에 연락드립니다.</p>
+    </form>
+  </div>
+</section>
+
+{{FOOTER}}
+
+<script>
+{{NAV_SCRIPT}}
+
+mnav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      mnav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ------------------------------------------------------------
+     전화 상담 버튼
+     휴대폰  : tel: 링크가 그대로 동작해 전화 앱이 열립니다.
+     PC      : 전화를 걸 수 없으므로 번호를 복사하고 안내를 띄웁니다.
+     ------------------------------------------------------------ */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+
+  function showToast(html) {
+    toast.innerHTML = html;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 3200);
+  }
+
+  function formatTel(digits) {
+    if (digits.length === 11) return digits.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    if (digits.length === 10) return digits.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    return digits;
+  }
+
+  // 터치 기기 여부로 전화 가능 여부를 판단합니다.
+  var canDial = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (canDial) return; // 휴대폰은 기본 동작에 맡깁니다
+
+      e.preventDefault();
+      var number = formatTel(link.getAttribute('href').replace('tel:', ''));
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(number).then(function () {
+          showToast('<b>' + number + '</b>번호를 복사했습니다');
+        }).catch(function () {
+          showToast('<b>' + number + '</b>으로 전화해 주세요');
+        });
+      } else {
+        showToast('<b>' + number + '</b>으로 전화해 주세요');
+      }
+    });
+  });
+  /* ------------------------------------------------------------
+     소개 영상
+     썸네일만 먼저 띄우고, 누른 뒤에 유튜브를 불러옵니다.
+     ------------------------------------------------------------ */
+  var vf = document.getElementById('videoFrame');
+  if (vf) {
+    var loadVideo = function () {
+      if (vf.querySelector('iframe')) return;
+      var id = vf.getAttribute('data-id');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = '센터 소개 영상';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen = true;
+      vf.innerHTML = '';
+      vf.style.cursor = 'default';
+      vf.appendChild(f);
+    };
+    vf.addEventListener('click', loadVideo);
+    vf.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
+    });
+  }
+</script>
+
+</body>
+</html>
