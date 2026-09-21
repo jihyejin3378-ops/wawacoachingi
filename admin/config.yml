@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: jihyejin3378-ops/wawacoachingi
   branch: main
 
 # 관리자 화면에서 올린 이미지가 저장되는 곳
