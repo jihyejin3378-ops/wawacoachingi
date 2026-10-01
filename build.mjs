@@ -461,6 +461,9 @@ function copyStatic() {
     const src = path.join(ROOT, dir);
     if (fs.existsSync(src)) fs.cpSync(src, path.join(DIST, dir), { recursive: true });
   }
+  // static/ 안의 파일은 사이트 맨 위(/)에 그대로 놓입니다 (네이버 소유확인 파일 등)
+  const stat = path.join(ROOT, 'static');
+  if (fs.existsSync(stat)) fs.cpSync(stat, DIST, { recursive: true });
 }
 
 /* ===============================================================

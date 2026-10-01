@@ -22,6 +22,7 @@ data/           사이트 데이터 (JSON)
   ├ site.json       전화번호, 주소, 네이버 코드 등
   ├ centers.json    전국지점 144곳
   └ reviews.json    수강 후기
+static/         사이트 맨 위(/)에 그대로 복사되는 파일 (네이버 소유확인 파일 등)
 index.html      메인 페이지 템플릿 ({{ }} 부분은 빌드할 때 채워집니다)
 build.mjs       빌드 스크립트
 netlify.toml    Netlify 설정
