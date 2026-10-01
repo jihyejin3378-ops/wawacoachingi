@@ -83,6 +83,7 @@ ${url ? `<meta property="og:url" content="${esc(SITE_URL + url)}" />` : ''}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/style.css" />
+<link rel="alternate" type="application/rss+xml" title="${esc(site.name)} 학습 이야기" href="${esc(SITE_URL)}/rss.xml" />
 ${extra}`;
 
 const header = () => `<header class="header">
@@ -432,13 +433,35 @@ function buildSeo() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = ['/', '/centers.html', '/reviews.html', '/blog.html']
     .map((u) => `  <url><loc>${SITE_URL}${u}</loc><lastmod>${today}</lastmod></url>`)
-    .concat(posts.map((p) => `  <url><loc>${SITE_URL}/posts/${p.slug}.html</loc><lastmod>${p.date}</lastmod></url>`));
+    .concat(posts.map((p) => `  <url><loc>${SITE_URL}/posts/${encodeURI(p.slug)}.html</loc><lastmod>${p.date}</lastmod></url>`));
 
   write('sitemap.xml',
 `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join('\n')}
 </urlset>
+`);
+
+  // RSS — 네이버 서치어드바이저에 제출하면 새 글을 더 빨리 수집합니다
+  const rssDate = (d) => new Date(`${d}T09:00:00+09:00`).toUTCString();
+  write('rss.xml',
+`<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${esc(site.name)} 학습 이야기</title>
+  <link>${SITE_URL}/blog.html</link>
+  <description>${esc(site.tagline)}</description>
+  <language>ko</language>
+  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
+${posts.map((p) => `  <item>
+    <title>${esc(p.title)}</title>
+    <link>${SITE_URL}/posts/${encodeURI(p.slug)}.html</link>
+    <guid>${SITE_URL}/posts/${encodeURI(p.slug)}.html</guid>
+    <pubDate>${rssDate(p.date)}</pubDate>
+    <description>${esc(p.excerpt)}</description>
+  </item>`).join('\n')}
+</channel>
+</rss>
 `);
 
   write('robots.txt',
