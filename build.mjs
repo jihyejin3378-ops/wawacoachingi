@@ -86,6 +86,7 @@ const branchPosts = fs.existsSync(path.join(ROOT, 'content/branches'))
           excerpt: data.excerpt || '',
           tags: data.tags || [],
           cover: data.cover || '',
+          coverSize: data.coverSize || 1200,
           map: data.map || '',
           mapAlt: data.mapAlt || '',
           html: withSnippets(marked.parse(content)),
@@ -486,7 +487,7 @@ function buildBranches() {
     <h1>${esc(b.title)}</h1>
     ${b.excerpt ? `<p class="lead">${esc(b.excerpt)}</p>` : ''}
   </div>
-  ${b.cover ? `<img class="post-media" src="${esc(b.cover)}" alt="${esc(b.center)} 와와학습코칭학원 대표 이미지" width="1200" height="1200" loading="eager" fetchpriority="high" decoding="async" />` : ''}
+  ${b.cover ? `<img class="post-media" src="${esc(b.cover)}" alt="${esc(b.center)} 와와학습코칭학원 대표 이미지" width="${b.coverSize}" height="${b.coverSize}" loading="eager" fetchpriority="high" decoding="async" />` : ''}
   <div class="post-body">
 ${b.map ? `<img src="${esc(b.map)}" alt="${esc(b.mapAlt)}" width="550" height="600" loading="lazy" decoding="async" style="display:block;margin:0 auto 22px" />\n` : ''}${b.html}
   </div>
