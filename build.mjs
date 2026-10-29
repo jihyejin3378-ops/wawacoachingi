@@ -487,7 +487,7 @@ function buildBranches() {
     <h1>${esc(b.title)}</h1>
     ${b.excerpt ? `<p class="lead">${esc(b.excerpt)}</p>` : ''}
   </div>
-  ${b.cover ? `<img class="post-media" src="${esc(b.cover)}" alt="${esc(b.center)} 와와학습코칭학원 대표 이미지" width="${b.coverSize}" height="${b.coverSize}" loading="eager" fetchpriority="high" decoding="async" />` : ''}
+  ${b.cover ? `<img class="post-media" src="${esc(b.cover)}" alt="${esc(b.center)} 와와학습코칭학원 대표 이미지" width="${b.coverSize}" height="${b.coverSize}" loading="eager" fetchpriority="high" decoding="async" style="display:block;margin:0 auto 22px;max-width:100%;height:auto" />` : ''}
   <div class="post-body">
 ${b.map ? `<img src="${esc(b.map)}" alt="${esc(b.mapAlt)}" width="550" height="600" loading="lazy" decoding="async" style="display:block;margin:0 auto 22px" />\n` : ''}${b.html}
   </div>
