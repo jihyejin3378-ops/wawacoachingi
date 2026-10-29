@@ -37,10 +37,12 @@ const reviews = readJSON('data/reviews.json').reviews;
 // 본문의 {{snippet}} 한 줄 → 공용 안내 이미지 묶음 (data/snippets.json)
 const snippets = fs.existsSync(path.join(ROOT, 'data/snippets.json'))
   ? readJSON('data/snippets.json') : { images: [] };
-const snippetHTML = '<div class="snippet-images">\n' + snippets.images.map((im, i) =>
-  `<img src="${esc(im.src)}" alt="${esc(snippets.alt || '')} ${i + 1}" width="${im.width}" height="${im.height}" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;margin:0 auto" />`
+// {{snippet 흥덕동 와와학습코칭학원}} 처럼 쓰면 그 문구가 이미지 설명(alt) 앞에 붙습니다.
+const snippetHTML = (label) => '<div class="snippet-images">\n' + snippets.images.map((im, i) =>
+  `<img src="${esc(im.src)}" alt="${esc(label || snippets.alt || '')} 안내 ${i + 1}" width="${im.width}" height="${im.height}" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;margin:0 auto" />`
 ).join('\n') + '\n</div>';
-const withSnippets = (html) => html.replace(/<p>\s*\{\{\s*snippet\s*\}\}\s*<\/p>/g, snippetHTML);
+const withSnippets = (html) =>
+  html.replace(/<p>\s*\{\{\s*snippet(?:\s+([^}]*?))?\s*\}\}\s*<\/p>/g, (_, label) => snippetHTML(label && label.trim()));
 
 const SITE_URL = (site.siteUrl || '').replace(/\/$/, '');
 const TEL_RAW = (site.tel || '').replace(/-/g, '');
@@ -65,6 +67,32 @@ const posts = fs.existsSync(path.join(ROOT, 'content/posts'))
       })
       .sort((a, b) => b.date.localeCompare(a.date))
   : [];
+
+// 지점글: content/branches/*.md — 학습 이야기 목록에는 안 나오고,
+// 전국지점에서 front matter 의 center(지점명) 카드에 '더보기'로 연결됩니다.
+const branchPosts = fs.existsSync(path.join(ROOT, 'content/branches'))
+  ? fs.readdirSync(path.join(ROOT, 'content/branches'))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => {
+        const { data, content } = matter(read(`content/branches/${f}`));
+        const slug = data.slug || f.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+        const date = (data.date instanceof Date)
+          ? data.date.toISOString().slice(0, 10)
+          : String(data.date || '').slice(0, 10);
+        return {
+          slug, date,
+          center: data.center || '',
+          title: data.title || slug,
+          excerpt: data.excerpt || '',
+          tags: data.tags || [],
+          cover: data.cover || '',
+          map: data.map || '',
+          mapAlt: data.mapAlt || '',
+          html: withSnippets(marked.parse(content)),
+        };
+      })
+  : [];
+const branchPostOf = (name) => branchPosts.find((b) => b.center === name);
 
 /* ===============================================================
    2. 공통 조각
@@ -277,6 +305,7 @@ function centerCard(c, idx) {
   <p class="ct-actions">
     <button class="ct-btn primary" type="button" data-map="${idx}">지도 보기</button>
     <a class="ct-btn" href="${kakao}" target="_blank" rel="noopener">길찾기</a>
+    ${branchPostOf(c.name) ? `<a class="ct-btn" href="/branches/${branchPostOf(c.name).slug}.html">더보기</a>` : ''}
   </p>
 </article>`;
 }
@@ -435,13 +464,56 @@ ${p.html}
 }
 
 /* ===============================================================
+   6-1. 지점글 — 제목 → 대표이미지 → 지도 → (스니펫) → 본문
+   =============================================================== */
+function buildBranches() {
+  for (const b of branchPosts) {
+    const url = `/branches/${b.slug}.html`;
+    const c = centers.find((x) => x.name === b.center);
+    const ld = {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: b.title, datePublished: b.date, dateModified: b.date,
+      description: b.excerpt, mainEntityOfPage: SITE_URL + url,
+      ...(b.cover ? { image: SITE_URL + b.cover } : {}),
+      author: { '@type': 'Organization', name: site.name },
+      publisher: { '@type': 'Organization', name: site.name },
+      ...(c ? { about: { '@type': 'EducationalOrganization', name: `${site.name} ${c.name}`, address: c.address } } : {}),
+    };
+
+    const body = `<article class="wrap post">
+  <div class="post-head">
+    <p class="crumb"><a href="/">홈</a> · <a href="/centers.html">전국지점</a> · ${esc(b.center)}</p>
+    <h1>${esc(b.title)}</h1>
+    ${b.excerpt ? `<p class="lead">${esc(b.excerpt)}</p>` : ''}
+  </div>
+  ${b.cover ? `<img class="post-media" src="${esc(b.cover)}" alt="${esc(b.center)} 와와학습코칭학원 대표 이미지" width="1200" height="1200" loading="eager" fetchpriority="high" decoding="async" />` : ''}
+  <div class="post-body">
+${b.map ? `<img src="${esc(b.map)}" alt="${esc(b.mapAlt)}" width="550" height="600" loading="lazy" decoding="async" style="display:block;margin:0 auto 22px" />\n` : ''}${b.html}
+  </div>
+  <div class="post-foot">
+    <a class="btn btn-ghost" href="/centers.html">전국지점으로</a>
+    <a class="btn btn-solid" href="/#counsel">상담 신청</a>
+  </div>
+</article>`;
+
+    write(`branches/${b.slug}.html`, shell({
+      title: `${b.title} | ${site.name}`,
+      desc: b.excerpt, url, body,
+      extra: `<meta property="og:type" content="article" />
+${b.cover ? `<meta property="og:image" content="${SITE_URL}${esc(b.cover)}" />\n` : ''}<script type="application/ld+json">${JSON.stringify(ld)}</script>`,
+    }));
+  }
+}
+
+/* ===============================================================
    7. 검색엔진용 파일
    =============================================================== */
 function buildSeo() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = ['/', '/centers.html', '/reviews.html', '/blog.html']
     .map((u) => `  <url><loc>${SITE_URL}${u}</loc><lastmod>${today}</lastmod></url>`)
-    .concat(posts.map((p) => `  <url><loc>${SITE_URL}/posts/${encodeURI(p.slug)}.html</loc><lastmod>${p.date}</lastmod></url>`));
+    .concat(posts.map((p) => `  <url><loc>${SITE_URL}/posts/${encodeURI(p.slug)}.html</loc><lastmod>${p.date}</lastmod></url>`))
+    .concat(branchPosts.map((b) => `  <url><loc>${SITE_URL}/branches/${encodeURI(b.slug)}.html</loc><lastmod>${b.date}</lastmod></url>`));
 
   write('sitemap.xml',
 `<?xml version="1.0" encoding="UTF-8"?>
@@ -507,6 +579,7 @@ buildHome();
 buildReviews();
 buildCenters();
 buildBlog();
+buildBranches();
 buildSeo();
 copyStatic();
 
