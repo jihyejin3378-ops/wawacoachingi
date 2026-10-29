@@ -34,6 +34,14 @@ const site = readJSON('data/site.json');
 const centers = readJSON('data/centers.json').centers;
 const reviews = readJSON('data/reviews.json').reviews;
 
+// 본문의 {{snippet}} 한 줄 → 공용 안내 이미지 묶음 (data/snippets.json)
+const snippets = fs.existsSync(path.join(ROOT, 'data/snippets.json'))
+  ? readJSON('data/snippets.json') : { images: [] };
+const snippetHTML = '<div class="snippet-images">\n' + snippets.images.map((im, i) =>
+  `<img src="${esc(im.src)}" alt="${esc(snippets.alt || '')} ${i + 1}" width="${im.width}" height="${im.height}" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;margin:0 auto" />`
+).join('\n') + '\n</div>';
+const withSnippets = (html) => html.replace(/<p>\s*\{\{\s*snippet\s*\}\}\s*<\/p>/g, snippetHTML);
+
 const SITE_URL = (site.siteUrl || '').replace(/\/$/, '');
 const TEL_RAW = (site.tel || '').replace(/-/g, '');
 
@@ -52,7 +60,7 @@ const posts = fs.existsSync(path.join(ROOT, 'content/posts'))
           excerpt: data.excerpt || '',
           tags: data.tags || [],
           cover: data.cover || '',
-          html: marked.parse(content),
+          html: withSnippets(marked.parse(content)),
         };
       })
       .sort((a, b) => b.date.localeCompare(a.date))
