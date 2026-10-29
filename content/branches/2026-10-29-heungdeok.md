@@ -7,7 +7,7 @@ tags:
   - 흥덕동학원
   - 국영수
   - 소수정예
-cover: /assets/uploads/heungdeok-branch-thumbnail.jpg
+cover: /assets/uploads/heungdeok-branch-thumbnail-v2.jpg
 map: /assets/uploads/yongin-heungdeok-branch-map.jpg
 mapAlt: 용인 흥덕동 위치 지도
 ---
